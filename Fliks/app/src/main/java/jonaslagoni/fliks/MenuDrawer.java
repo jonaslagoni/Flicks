@@ -1,29 +1,26 @@
 package jonaslagoni.fliks;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
+import android.view.View;
 
 import com.googlecode.flickrjandroid.Flickr;
 import com.googlecode.flickrjandroid.photos.PhotosInterface;
 import com.googlecode.flickrjandroid.photos.SearchParameters;
+
 import jonaslagoni.fliks.DataCom.BrowseController;
 import jonaslagoni.fliks.DataCom.BrowsePara;
 
 public class MenuDrawer extends Controller implements NavigationView.OnNavigationItemSelectedListener {
-    private RecyclerView mRecyclerView;
-    private LinearLayoutManager mLinearLayoutManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +58,7 @@ public class MenuDrawer extends Controller implements NavigationView.OnNavigatio
         search_test.setText("Mountain");
         new BrowseController(super.findViewById(R.id.content_menu_drawer)).execute(new BrowsePara(f, t, search_test));
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -104,11 +102,10 @@ public class MenuDrawer extends Controller implements NavigationView.OnNavigatio
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         if (id == R.id.nav_browse) {
-            // Handle the camera action
+            startActivity(new Intent(this, BrowsePictures.class));
         } else if (id == R.id.nav_login) {
 
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

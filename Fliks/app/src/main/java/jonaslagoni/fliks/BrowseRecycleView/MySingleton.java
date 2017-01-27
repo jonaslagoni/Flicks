@@ -1,4 +1,4 @@
-package jonaslagoni.fliks;
+package jonaslagoni.fliks.BrowseRecycleView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
