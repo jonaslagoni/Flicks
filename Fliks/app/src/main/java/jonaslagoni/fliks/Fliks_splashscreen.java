@@ -11,6 +11,6 @@ public class Fliks_splashscreen extends Controller {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
         splashSpinner = (ProgressBar)findViewById(R.id.SplashLoading);
-        startActivity(new Intent(Fliks_splashscreen.this, MenuDrawer.class));
+        startActivity(new Intent(Fliks_splashscreen.this, OAuthTest.class));
     }
 }

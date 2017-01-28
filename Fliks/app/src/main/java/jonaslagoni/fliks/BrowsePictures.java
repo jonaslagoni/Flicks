@@ -45,7 +45,7 @@ public class BrowsePictures extends Controller {
     }
 
     private void setData(){
-        Flickr f = new Flickr("b665313ceeefd9095f0f6bb6fcbefa57");
+        Flickr f = new Flickr("b665313ceeefd9095f0f6bb6fcbefa57", "9ff48e279a496c8d");
         PhotosInterface t = f.getPhotosInterface();
         SearchParameters search_test = new SearchParameters();
         search_test.setText("Mountain");
