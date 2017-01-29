@@ -13,11 +13,6 @@ import com.googlecode.flickrjandroid.photos.PhotoList;
 import org.json.JSONException;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import jonaslagoni.fliks.MySingleton;
-import jonaslagoni.fliks.R;
 
 /**
  * Created by jonas on 26-01-2017.
@@ -36,7 +31,7 @@ public class BrowseController extends AsyncTask<Object, Void, PhotoList> {
         try {
             PhotoList photolist_test = browsePara.getPhotosInterface().search(browsePara.getSearchParameters(), 200, 1);
             for(final Photo p: photolist_test){
-                browsePara.getBrowsePictures().runOnUiThread(new Runnable() {
+                browsePara.getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         browsePara.getMyAdapter().addPhoto(p);

@@ -2,12 +2,13 @@ package jonaslagoni.fliks.BrowseRecycleView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
 
 import com.googlecode.flickrjandroid.Flickr;
 import com.googlecode.flickrjandroid.photos.PhotosInterface;
 import com.googlecode.flickrjandroid.photos.SearchParameters;
 
-import jonaslagoni.fliks.BrowsePictures;
+import jonaslagoni.fliks.Fragments.BrowseFragment;
 import jonaslagoni.fliks.R;
 
 /**
@@ -15,11 +16,13 @@ import jonaslagoni.fliks.R;
  */
 
 public class BrowseTextWatcher implements TextWatcher {
-    private BrowsePictures browsePictures;
+    private BrowseFragment browseFragment;
     private MyAdapter recyclerView_Adapter;
-    public BrowseTextWatcher(BrowsePictures browsePictures, MyAdapter recyclerView_Adapter){
-        this.browsePictures = browsePictures;
+    private View _view;
+    public BrowseTextWatcher(BrowseFragment browseFragment, MyAdapter recyclerView_Adapter, View _view){
+        this.browseFragment = browseFragment;
         this.recyclerView_Adapter = recyclerView_Adapter;
+        this._view = _view;
     }
 
     @Override
@@ -37,7 +40,7 @@ public class BrowseTextWatcher implements TextWatcher {
             SearchParameters search_test = new SearchParameters();
             search_test.setText(s.toString());
             recyclerView_Adapter.reset();
-            new BrowseController(browsePictures.findViewById(R.id.content_menu_drawer)).execute(new BrowsePara(f, t, search_test, recyclerView_Adapter, browsePictures));
+            new BrowseController(_view).execute(new BrowsePara(f, t, search_test, recyclerView_Adapter, browseFragment.getActivity()));
         }
     }
 }

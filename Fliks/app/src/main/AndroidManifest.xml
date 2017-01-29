@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jonaslagoni.fliks">
 
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -22,16 +23,10 @@
             android:label="@string/title_activity_menu_drawer"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".BrowsePictures"
-            android:label="@string/title_activity_browser"
-            android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
             android:name=".BrowseRecycleView.FullscreenImageview"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_imageview"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".OAuthTest"></activity>
     </application>
 
 </manifest>

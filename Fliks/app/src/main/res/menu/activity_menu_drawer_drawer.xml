@@ -5,7 +5,11 @@
         <item
             android:id="@+id/nav_browse"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Browse" />
+            android:title="Browse pictures" />
+        <item
+            android:id="@+id/nav_map"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Browse map" />
     </group>
 
     <item android:title="Your profile">
