@@ -2,6 +2,7 @@ package jonaslagoni.fliks.OAuth;
 
 import android.app.Activity;
 import android.os.AsyncTask;
+import android.support.design.widget.Snackbar;
 import android.view.View;
 import android.webkit.WebView;
 
@@ -12,6 +13,7 @@ import com.googlecode.flickrjandroid.oauth.OAuthToken;
 import java.io.IOException;
 import java.net.URL;
 
+import jonaslagoni.fliks.MenuDrawer;
 import jonaslagoni.fliks.R;
 
 import static com.googlecode.flickrjandroid.auth.Permission.WRITE;
@@ -23,32 +25,57 @@ import static com.googlecode.flickrjandroid.auth.Permission.WRITE;
 public class OAuthController extends AsyncTask<Void, Void, URL> {
     private WebView webView;
     private Activity activity;
-    private Flickr f = new Flickr("b665313ceeefd9095f0f6bb6fcbefa57", "9ff48e279a496c8d");
+    private Flickr flickr;
     private OAuthToken token = null;
+    private View _view;
+
+    /**
+     * AsyncTask for starting the OAuth process
+     * @param activity Activity
+     * @param _view View
+     */
     public OAuthController(Activity activity, View _view){
         this.webView = (WebView) _view.findViewById(R.id.OAuthWebview);
         this.activity = activity;
+        this._view = _view;
+        //get flickr object from MenuDrawer
+        flickr = ((MenuDrawer)activity).getFlickr();
     }
+
+    /**
+     * Lets do some stuff
+     * @param params Void
+     * @return URL
+     */
     @Override
     protected URL doInBackground(Void... params) {
         String callBackUrl = "fragment_login.xml";
         URL url = null;
         try {
-            token = f.getOAuthInterface().getRequestToken(callBackUrl);
-            url = f.getOAuthInterface().buildAuthenticationUrl(WRITE, token);
+            //Make initial handshake with server
+            token = flickr.getOAuthInterface().getRequestToken(callBackUrl);
+            //build the URL for login
+            url = flickr.getOAuthInterface().buildAuthenticationUrl(WRITE, token);
         } catch (IOException e) {
-            e.printStackTrace();
+            Snackbar.make(_view, "Check your internet connection #1001", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         } catch (FlickrException e) {
-            e.printStackTrace();
+            Snackbar.make(_view, "Flickr error #1002", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }
         return url;
     }
 
+    /**
+     * When all done
+     * @param result URL
+     */
     @Override
     protected void onPostExecute(URL result) {
+        //enable javascript or wont load
         webView.getSettings().setJavaScriptEnabled(true);
-        WebClient webClient = new WebClient(f, token, activity);
+        //add a custom webclient for handling the last bit of verification
+        WebClient webClient = new WebClient(flickr, token, activity, _view);
         webView.setWebViewClient(webClient);
+        //finally load the URL the user need to use for login
         webView.loadUrl(result.toString());
     }
 

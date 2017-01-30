@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import jonaslagoni.fliks.OAuth.OAuthController;
 import jonaslagoni.fliks.R;
 
@@ -14,6 +13,16 @@ import jonaslagoni.fliks.R;
  */
 
 public class LoginFragment extends Fragment{
+    public LoginFragment(){
+        // Required empty public constructor
+    }
+
+    /**
+     * @param inflater LayoutInflater
+     * @param container ViewGroup
+     * @param savedInstanceState Bundle
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View rootView = inflater.inflate(R.layout.fragment_login, container, false);
@@ -23,4 +32,5 @@ public class LoginFragment extends Fragment{
     public void initialOauth(View _view) {
         new OAuthController(getActivity(), _view).execute();
     }
+
 }

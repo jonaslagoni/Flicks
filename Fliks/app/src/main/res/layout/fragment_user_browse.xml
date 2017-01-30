@@ -2,9 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.BrowseFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+    tools:context="jonaslagoni.fliks.Fragments.UserBrowseFragment">
+    <TextView
+        android:text="Your pictures"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        android:textSize="24sp"
+        android:paddingTop="20dp"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -24,36 +29,19 @@
             android:minHeight="150dip"
             android:minWidth="150dip" />
     </RelativeLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:weightSum="1"
-        android:layout_height="40dp">
-
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/browse_search_input"
-            android:textAlignment="center"
-            android:hint="Search" />
-    </LinearLayout>
-
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="40dp"
-        android:layout_height="500dp">
+        android:layout_marginTop="60dp"
+        android:layout_height="450dp">
 
         <android.support.v7.widget.RecyclerView
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:id="@+id/recyclerview_component"
-            android:layout_height="match_parent" />
+            android:id="@+id/recyclerview_component"/>
     </LinearLayout>
 </FrameLayout>

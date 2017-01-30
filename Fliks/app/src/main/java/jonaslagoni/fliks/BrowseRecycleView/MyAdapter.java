@@ -27,58 +27,55 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
     private ImageLoader mImageLoader;
 
     /**
-     * Creates the adapter with the first desired urls
-     * @param context
+     * Creates the adapter
+     * @param context Context
      */
     public MyAdapter(Context context){
         values_test = new ArrayList();
         this.context = context;
-        // Get the ImageLoader through your singleton class.
+        // Get the ImageLoader through singleton class.
         mImageLoader = MySingleton.getInstance(context).getImageLoader();
     }
 
     /**
-     *
-     * @param parent
-     * @param viewType
+     * @param parent ViewGroup
+     * @param viewType int
      * @return
      */
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType){
-
         View view1 = LayoutInflater.from(context).inflate(R.layout.layout_single_view,parent,false);
+        //create the custom viewholder
         MyViewHolder viewHolder1 = new MyViewHolder(view1);
 
         return viewHolder1;
     }
 
     /**
-     *
-     * @param Vholder
-     * @param position
+     * @param Vholder MyViewHolder custom
+     * @param position int
      */
     @Override
     public void onBindViewHolder(MyViewHolder Vholder, int position){
         // Set the URL of the image that should be loaded into this view, and
         // specify the ImageLoader that will be used to make the request.
         Vholder.thumbnailNetworkView.setImageUrl(values_test.get(position).getThumnailUrl(), mImageLoader);
+        //sets the url for this viewholder from the list
         Vholder.setUrl(values_test.get(position).getImageUrl());
     }
 
     /**
      * The size of the list of urls
-     * @return
+     * @return int
      */
     @Override
     public int getItemCount(){
         return values_test.size();
     }
 
-
-//Custom field
     /**
-     * Adds a url to the list
-     * @param url
+     * Adds a photo to the list and notify that the data have changed
+     * @param photo Photo
      */
     public void addPhoto(Photo photo){
         //add the url
@@ -87,6 +84,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder> {
         notifyDataSetChanged();
     }
 
+    /**
+     * Reset the list
+     */
     public void reset(){
         values_test.clear();
     }

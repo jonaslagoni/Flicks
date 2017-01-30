@@ -7,17 +7,14 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-
 import com.android.volley.toolbox.NetworkImageView;
-
-import jonaslagoni.fliks.Controller;
 import jonaslagoni.fliks.R;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
  * status bar and navigation/system bar) with user interaction.
  */
-public class FullscreenImageview extends Controller {
+public class FullscreenImageview extends AppCompatActivity {
     /**
      * Whether or not the system UI should be auto-hidden after
      * {@link #AUTO_HIDE_DELAY_MILLIS} milliseconds.
@@ -112,9 +109,9 @@ public class FullscreenImageview extends Controller {
         // while interacting with the UI.
         findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
 
-
+        //get the url
         String url = getIntent().getStringExtra("Test");
-
+        //Load the picture
         ((NetworkImageView)findViewById(R.id.fullscreen_imageview)).setImageUrl(url, MySingleton.getInstance(mContentView.getContext()).getImageLoader());
     }
 

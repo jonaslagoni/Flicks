@@ -19,6 +19,9 @@ public class MySingleton {
     private ImageLoader mImageLoader;
     private static Context mCtx;
 
+    /**
+     * @param context Context
+     */
     private MySingleton(Context context) {
         mCtx = context;
         mRequestQueue = getRequestQueue();
@@ -40,6 +43,10 @@ public class MySingleton {
                 });
     }
 
+    /**
+     * @param context Context
+     * @return MySingleton
+     */
     public static synchronized MySingleton getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new MySingleton(context);
@@ -47,6 +54,9 @@ public class MySingleton {
         return mInstance;
     }
 
+    /**
+     * @return RequestQueue
+     */
     public RequestQueue getRequestQueue() {
         if (mRequestQueue == null) {
             // getApplicationContext() is key, it keeps you from leaking the
@@ -56,10 +66,17 @@ public class MySingleton {
         return mRequestQueue;
     }
 
+    /**
+     * @param req Request
+     * @param <T>
+     */
     public <T> void addToRequestQueue(Request<T> req) {
         getRequestQueue().add(req);
     }
 
+    /**
+     * @return ImageLoader
+     */
     public ImageLoader getImageLoader() {
         return mImageLoader;
     }

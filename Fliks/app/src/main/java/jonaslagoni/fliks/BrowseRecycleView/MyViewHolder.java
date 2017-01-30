@@ -20,31 +20,46 @@ import jonaslagoni.fliks.R;
 public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     //the NetworkImageView this component use
     public NetworkImageView thumbnailNetworkView;
+    //the url for the picture this viewholder uses
     private String url;
-    private final Context context;
+    private Context context;
+
     /**
      * Get the components used from the view
-     * @param v
+     * @param v View
      */
     public MyViewHolder(View v){
         super(v);
         this.context = v.getContext();
         //get the networkview from the view and save it
         thumbnailNetworkView = (NetworkImageView) v.findViewById(R.id.ThumbnailNetworkView);
+        //set a clicklistener for when the user want to view it fullscreen
         thumbnailNetworkView.setOnClickListener(this);
     }
 
+    /**
+     * When this is clicked
+     * @param vs View
+     */
     @Override
     public void onClick(View vs) {
-        Intent intent =  new Intent(context, FullscreenImageview.class);
+        //Show the fullscreen and add the extra for url
+        Intent intent = new Intent(context, FullscreenImageview.class);
         intent.putExtra("Test", url);
         context.startActivity(intent);
     }
 
+    /**
+     * @return String, the url for the picture
+     */
     public String getUrl() {
         return url;
     }
 
+    /**
+     * Sets the url for the picture
+     * @param url String
+     */
     public void setUrl(String url) {
         this.url = url;
     }

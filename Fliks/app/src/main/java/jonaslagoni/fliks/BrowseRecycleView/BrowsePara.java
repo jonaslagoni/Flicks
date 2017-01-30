@@ -14,29 +14,47 @@ import jonaslagoni.fliks.Fragments.BrowseFragment;
 
 public class BrowsePara {
     private Flickr flickr;
-    private PhotosInterface photosInterface;
     private SearchParameters searchParameters;
     private MyAdapter myAdapter;
     private Activity activity;
-    public BrowsePara(Flickr flickr, PhotosInterface photosInterface, SearchParameters searchParameters, MyAdapter myAdapter, Activity activity){
+
+    /**
+     * This is used to store the information needed for the arguments for the AsyncTask browsecontroller
+     * @param flickr Flickr
+     * @param searchParameters SearchParameters
+     * @param myAdapter MyAdapter
+     * @param activity Activity
+     */
+    public BrowsePara(Flickr flickr, SearchParameters searchParameters, MyAdapter myAdapter, Activity activity){
         this.flickr = flickr;
-        this.photosInterface = photosInterface;
         this.searchParameters = searchParameters;
         this.myAdapter = myAdapter;
         this.activity = activity;
     }
 
+    /**
+     * @return flickr
+     */
     public Flickr getFlickr() {
         return flickr;
     }
-    public PhotosInterface getPhotosInterface() {
-        return photosInterface;
-    }
+
+    /**
+     * @return SearchParameters
+     */
     public SearchParameters getSearchParameters() {
         return searchParameters;
     }
+
+    /**
+     * @return MyAdapter
+     */
     public MyAdapter getMyAdapter() {
         return myAdapter;
     }
+
+    /**
+     * @return Activity
+     */
     public Activity getActivity() { return activity; }
 }
