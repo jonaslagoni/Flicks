@@ -2,13 +2,12 @@ package jonaslagoni.fliks.BrowseRecycleView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.android.volley.toolbox.NetworkImageView;
 
+import jonaslagoni.fliks.FullscreenImageview;
 import jonaslagoni.fliks.R;
 
 /**

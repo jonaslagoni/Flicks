@@ -32,7 +32,7 @@ public class BrowseController extends AsyncTask<Object, Void, PhotoList> {
     }
 
     /**
-     * Retreives the Photolist from flickr
+     * Retrieves the Photolist from flickr
      * @param params Object
      * @return
      */
@@ -64,6 +64,7 @@ public class BrowseController extends AsyncTask<Object, Void, PhotoList> {
             Snackbar.make(rootView, "Check your internet connection #3000", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }catch(FlickrException e){
             Snackbar.make(rootView, "Make sure you search for something", Snackbar.LENGTH_LONG).setAction("Action", null).show();
+            System.out.println(e);
         }catch(JSONException e){
             Snackbar.make(rootView, "Internal error #3002", Snackbar.LENGTH_LONG).setAction("Action", null).show();
         }

@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BrowseRecycleView.FullscreenImageview"
+            android:name=".FullscreenImageview"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_fullscreen_imageview"
             android:theme="@style/FullscreenTheme" />

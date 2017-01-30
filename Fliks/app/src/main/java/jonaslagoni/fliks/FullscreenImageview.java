@@ -1,4 +1,4 @@
-package jonaslagoni.fliks.BrowseRecycleView;
+package jonaslagoni.fliks;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.ActionBar;
@@ -8,6 +8,8 @@ import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import com.android.volley.toolbox.NetworkImageView;
+
+import jonaslagoni.fliks.BrowseRecycleView.MySingleton;
 import jonaslagoni.fliks.R;
 
 /**
